@@ -1,0 +1,9 @@
+<select  (change)="find($event)">
+    <option *ngFor="let i of common" [value]="i">{{i}}</option>
+</select>
+
+<div *ngIf="commonfr.length>0">
+     <select>
+       <option *ngFor="let i of commonfr" [value]="i.name">{{i.name}}</option>
+     </select>
+</div>

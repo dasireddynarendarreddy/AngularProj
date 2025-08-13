@@ -1,0 +1,11 @@
+<select (change)="fill($event)">
+    <option> select number</option>
+    <option *ngFor="let i of people" [value]="i.adharNumber">
+        {{i.adharNumber}}
+
+    </option>
+</select>
+
+<input type="text" name="name" [value]="selectedperson?.name" [disabled]="!selectedperson?.name"/>
+<input type="text" name="age" [value]="selectedperson?.age" [disabled]="!selectedperson?.age"/>
+
