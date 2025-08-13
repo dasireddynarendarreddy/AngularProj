@@ -1,0 +1,24 @@
+<form #myform="ngForm" (ngSubmit)="validate(myform)">
+    <label>Name:</label>
+    <input type="text" placeholder="enter your name" name="name" #uname="ngModel" required minlength="3" [(ngModel)]="data.name"/>
+    <div *ngIf="uname.touched">enter name</div>
+    <label>
+        Email:
+    </label>
+    <input type="text" placeholder="enter your mail" #mail="ngModel" name="mail" required [(ngModel)]="data.email"/>
+    <label>PhoneNumber:</label>
+    <input type="tel" placeholder="enter your phonenumber" #phnumber="ngModel" name="phonenumber" required [(ngModel)]="data.phonenumber" maxlength="10"/>
+    <label>Gender:</label>
+    <label>male:</label>
+    <input type="radio" name="gender" [(ngModel)]="data.gender"  value="male"/>
+    <label>female:</label>
+ <input type="radio" name="gender" [(ngModel)]="data.gender" value="female"/>
+ <input type="submit" />
+
+
+
+
+</form><h4 *ngIf="uname.errors?.['required']">
+  <h5>Error with the name!</h5>
+</h4>
+

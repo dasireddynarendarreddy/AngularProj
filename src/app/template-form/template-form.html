@@ -1,0 +1,71 @@
+<form #myform="ngForm" (ngSubmit)="validate(myform)">
+
+  <!-- Name Field -->
+  <input type="text" 
+         name="name" 
+         #name="ngModel" 
+         placeholder="Name" 
+         required 
+         minlength="10" 
+         [(ngModel)]="data.name"/>
+
+  <!-- Name Errors -->
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <small *ngIf="name.errors?.['required']" style="color:red">
+      Name is required.
+    </small>
+    <small *ngIf="name.errors?.['minlength']" style="color:red">
+      Name must be at least 10 characters long.
+    </small>
+  </div>
+
+  <!-- Email Field -->
+  <input type="email" 
+         name="email" 
+         #email="ngModel" 
+         placeholder="Email" 
+         required 
+         [(ngModel)]="data.email"/>
+
+  <!-- Email Errors -->
+  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+    <small *ngIf="email.errors?.['required']" style="color:red">
+      Email is required.
+    </small>
+    <small *ngIf="email.errors?.['email']" style="color:red">
+      Enter a valid email address.
+    </small>
+  </div>
+
+  <!-- Password Field -->
+  <input type="password" 
+         name="password" 
+         #password="ngModel" 
+         placeholder="Enter password" 
+         required 
+         minlength="6"
+         [(ngModel)]="data.password"/>
+
+  <!-- Password Errors -->
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+    <small *ngIf="password.errors?.['required']" style="color:red">
+      Password is required.
+    </small>
+    <small *ngIf="password.errors?.['minlength']" style="color:red">
+      Password must be at least 6 characters long.
+    </small>
+  </div>
+  <label>male:</label>
+  <input type="radio" name="gender" value="male" #male="ngModel" [(ngModel)]="data.gender"/>
+  <label></label>
+  <input type="radio" name="gender" value="female" #female="ngModel" [(ngModel)]="data.gender"/>
+  <div *ngIf="male.touched&&female.touched">
+     <h3>select must and should</h3>
+  </div>
+
+
+  <!-- Submit -->
+  <input type="submit" [disabled]="!myform.valid" value="Submit"/>
+
+  <h3>Form is valid: {{ myform.valid }}</h3>
+</form>
